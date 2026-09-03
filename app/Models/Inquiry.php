@@ -16,6 +16,7 @@ class Inquiry extends Model
         'email',
         'subject',
         'body',
+        'status',
     ];
 
     public function user(): BelongsTo

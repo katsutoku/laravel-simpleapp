@@ -31,52 +31,14 @@
             <div class="status">お問い合わせを送信しました。</div>
         @endif
 
-        <p><a href="{{ route('announcements.index') }}">お知らせ一覧を見る</a></p>
-        <p><a href="{{ route('inquiries.create') }}">お問い合わせする</a></p>
-
-        <p><a href="{{ route('settings.edit') }}">設定を変更する</a></p>
-
         <p class="info">ようこそ、{{ auth()->user()->name }} さん</p>
         <p class="info">メールアドレス: {{ auth()->user()->email }}</p>
 
-        <h2>パスワード変更</h2>
-
-        @if ($errors->updatePassword->any())
-            <div class="errors">
-                <ul style="margin:0; padding-left: 18px;">
-                    @foreach ($errors->updatePassword->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        @if (session('status') === 'password-updated')
-            <div class="status">パスワードを変更しました。</div>
-        @endif
-
-        <form method="POST" action="{{ route('user-password.update') }}">
-            @csrf
-            @method('PUT')
-
-            <div class="form-group">
-                <label for="current_password">現在のパスワード</label>
-                <input type="password" id="current_password" name="current_password" required>
-            </div>
-
-            <div class="form-group">
-                <label for="password">新しいパスワード</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-
-            <div class="form-group">
-                <label for="password_confirmation">新しいパスワード（確認）</label>
-                <input type="password" id="password_confirmation" name="password_confirmation" required>
-            </div>
-
-            <button type="submit" class="btn-primary">パスワードを変更</button>
-        </form>
-
+        <p><a href="{{ route('announcements.index') }}">お知らせ一覧を見る</a></p>
+        <p><a href="{{ route('inquiries.create') }}">お問い合わせする</a></p>
+        <p><a href="{{ route('settings.edit') }}">設定を変更する</a></p>
+        <p><a href="{{ route('mypage.password') }}">パスワードを変更する</a></p>
+        
         <form class="logout-form" method="POST" action="{{ route('logout') }}">
             @csrf
             <button type="submit" class="btn-danger">ログアウト</button>
